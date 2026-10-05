@@ -16,21 +16,30 @@ Vehicle Dynamics Simulator is an honours-stage C++ project that models and visua
 - Accurate reproduction of vehicle performance metrics to enable validation against manufacturer data.
 - Interactive visualisation of dynamics and telemetry to aid understanding of how vehicle subsystems interact.
 
-## Build & Run (Windows, MSVC + Ninja)
-1. Configure and generate build files:
+## Build & Run
 
-   `cmake -S . -B build -G Ninja`
+### macOS
 
-2. Build the project:
+From the project directory, clean, build, and run:
 
-   `cmake --build build --config Release`
+```sh
+cmake --build build --target clean
+./build.sh
+./build/bin/VehicleDynamicsSimulation
+```
 
-3. Run the executable (example):
+`./build` is the build directory, not a command. The build script configures with the `macos-release` (seen in: build.sh) configure preset and builds the `build` directory.
 
-   `./build/VehicleDynamicsSimulation/VehicleDynamicsSimulation.exe`
+### Windows (MSVC + Ninja)
 
-4. or, copy & paste this in: 
-   `cmake -S . -B build -G Ninja cmake --build build --config Release ./build VehicleDynamicsSimulation`
+1. Configure and build:
+
+   `cmake --preset x64-release`
+   `cmake --build --preset x64-release`
+
+2. Run the executable:
+
+   `.\out\build\x64-release\bin\VehicleDynamicsSimulation.exe`
 
 ## Notes
 - External dependencies (`external/`) include GLFW and GLAD and are tracked as source. Build artifacts are ignored by `.gitignore`.

@@ -22,11 +22,16 @@ target_include_directories(glad PUBLIC
     ${CMAKE_SOURCE_DIR}/external/glad/include
 )
 
+# Put all runtime outputs (exe and DLLs) into a single, predictable folder.
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 # Executable
 add_executable(VehicleDynamicsSimulation
     VehicleDynamicsSimulation/main.cpp
     VehicleDynamicsSimulation/HelperFunctions/HelperFunctionsOpenGL.cpp
- "VehicleDynamicsSimulation/Window/windowManager.cpp" "VehicleDynamicsSimulation/Window/windowManager.h")
+ "VehicleDynamicsSimulation/Window/windowManager.cpp" "VehicleDynamicsSimulation/Window/windowManager.h"
+ VehicleDynamicsSimulation/Window/drawShape.cpp
+ VehicleDynamicsSimulation/Window/drawShape.h)
 
 target_include_directories(VehicleDynamicsSimulation PRIVATE
     ${CMAKE_SOURCE_DIR}/VehicleDynamicsSimulation
@@ -50,9 +55,6 @@ else()
 endif()
 
 set_property(TARGET VehicleDynamicsSimulation PROPERTY CXX_STANDARD 20)
-
-# Put all runtime outputs (exe and DLLs) into a single, predictable folder
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # If an "assets/" folder exists in the source tree, copy it to the runtime output
 if(EXISTS ${CMAKE_SOURCE_DIR}/assets)

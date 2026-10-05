@@ -6,7 +6,8 @@
 
 int main()
 {
-
-   return WindowManager::CreateAndRunWindow();
-    
+   WindowManager::CreateAndRunWindow();
+   // glfwMakeContextCurrent(nullptr);
+   // glEnable(GL_DEPTH_TEST);
+   // gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 }
